@@ -1,0 +1,60 @@
+### получение списка всех постов
+GET /api/post HTTP/1.1
+Host: localhost:5000
+
+### получение одного поста блога
+GET /api/post/617fd441dec41322ebcbad3d HTTP/1.1
+Host: localhost:5000
+
+### добавление нового поста блога
+POST /api/post HTTP/1.1
+Host: localhost:5000
+Content-type: application/json; charset=utf-8
+
+{
+    "title": "Заголовок первого поста",
+    "content": "Контент первого поста",
+    "author": "Автор первого поста",
+    "picture": ""
+}
+
+### обновление одного поста блога
+PUT /api/post HTTP/1.1
+Host: localhost:5000
+Content-type: application/json; charset=utf-8
+
+{
+    "title": "Заголовок первого поста (обновление)",
+    "content": "Контент первого поста (обновление)",
+    "author": "Автор первого поста (обновление)",
+    "picture": "",
+    "_id": "61825d44896759a8d9b350c5"
+}
+
+### удаление одного поста блога
+DELETE /api/post/61825d44896759a8d9b350c5 HTTP/1.1
+Host: localhost:5000
+
+### создание поста с изображением
+POST /api/post HTTP/1.1
+Host: localhost:5000
+Content-Type: multipart/form-data; boundary=MultiPartFormDataBoundary
+
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="title"
+
+Заголовок второго поста
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="content"
+
+Контент второго поста
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="author"
+
+Автор второго поста
+--MultiPartFormDataBoundary
+Content-Disposition: form-data; name="picture"; filename="picture.png"
+Content-Type: image/png
+
+< ./picture.png
+--MultiPartFormDataBoundary--
